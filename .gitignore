@@ -15,9 +15,10 @@ local.properties
 .classpath
 .settings/
 .loadpath
-
+.saas-cache
 # External tool builders
 .externalToolBuilders/
+WebContent/resources/.saas-cache/
 
 # Locally stored "Eclipse launch configurations"
 *.launch

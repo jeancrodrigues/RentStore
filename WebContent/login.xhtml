@@ -7,28 +7,48 @@
 <h:head></h:head> 
 <body>
 	<ui:composition template="/resources/commomTemplate.xhtml">
+		
 		<ui:define name="hidemainmenu" />
+		<ui:define name="hidecontainer" />		
 						
-		<ui:define name="nosidebar">						
-			<h2>Bem-vindo</h2>
-			<p>Faça o login para entrar na aplicação</p>
+		<ui:define name="hidecontainer">
+			<div class="row" gumby-fixed="bottom">
+			<div class="centered four columns"> 
+								
+				<h2>Bem-vindo</h2>
+				<p>Faça o login para entrar na aplicação</p>
+				
+				<h:form>
+					
+						<div class="row">						
+							<ul>	
+								<h:outputText value="Usuário" />				
+								<li class="field">
+									<h:inputText class="text input" type="text" value="#{loginBean.nomeUsuario}" id="lgnome"/>
+								</li>
+								<h:outputText value="Senha" />
+								<li class="field">
+									<h:inputSecret class="password input" type="password" value="#{loginBean.senhaUsuario}" id="lgsenha"/>
+								</li>
+								
+							</ul>
+						</div>
+						<div class="row">
+<!-- 							<div class="medium info btn"><h:commandLink action="" value="Voltar"/></div> -->
+							<div  class="medium info btn">
+								<h:commandLink id="lgbtn" value="Login" action="#{loginBean.logar}">
+									<f:ajax execute="@form" listener="#{loginBean.logar()}"/>
+								</h:commandLink>
+							</div>				
+						</div>
+						<div class="row">
+							<p>Primeira vez aqui? <h:commandLink action="registro.xhtml" value="Registre-se" /></p>
+						</div>								
+				</h:form>
+				
 			
-			<h:form>
-				<div class="row">
-					<ul>	
-						<h:outputText value="Usuário" />				
-						<li class="field">
-							<h:inputText class="text input" type="text" value="#{loginBean.nomeUsuario}" />
-						</li>
-						<h:outputText value="Senha" />
-						<li class="field">
-							<h:inputText class="password input" type="password" value="#{loginBean.nomeUsuario}" />
-						</li>
-						
-					</ul>
-				</div>			
-			</h:form>
-			<p>Primeira vez aqui? Registre-se </p>
+			</div>
+			</div>
 											
 		</ui:define>
 			
