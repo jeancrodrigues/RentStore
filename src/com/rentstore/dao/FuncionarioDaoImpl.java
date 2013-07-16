@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -59,12 +60,23 @@ public class FuncionarioDaoImpl implements IFuncionarioDao {
 
 	@Override
 	public Funcionario buscarLogin(String nomeUsuario) {
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Funcionario> criteria = cb.createQuery(Funcionario.class);
-        Root<Funcionario> func = criteria.from(Funcionario.class);
-        criteria.select(func).where(cb.equal(func.get("usuario"), nomeUsuario));
-        
-        return em.createQuery(criteria).getSingleResult();		
+		
+			try {
+				CriteriaBuilder cb = em.getCriteriaBuilder();
+				CriteriaQuery<Funcionario> criteria = cb
+						.createQuery(Funcionario.class);
+				Root<Funcionario> func = criteria.from(Funcionario.class);
+				criteria.select(func).where(
+						cb.equal(func.get("usuario"), nomeUsuario));
+				
+				Funcionario funcionario = em.createQuery(criteria).getSingleResult();
+				
+				return funcionario;
+				
+			} catch ( NoResultException nre ) {
+				nre.printStackTrace();
+				return null;
+			}				
 	}
 
 }

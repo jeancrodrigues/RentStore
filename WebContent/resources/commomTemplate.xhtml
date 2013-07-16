@@ -70,8 +70,10 @@
 					</li>
 					<li><a href="about.xhtml">About</a></li>
 					<li>
-						<h:form rendered="#{baseBean.usuarioLogado}">
-							<h:commandLink action="#{baseBean.logout}" value="Desconectar (#{baseBean.loggedUserName})"/>
+						<h:form rendered="#{sessionBean.usuarioLogado}">
+							<h:commandLink action="#{sessionBean.logout}" value="Desconectar (#{sessionBean.loggedUserName})">
+								<f:ajax execute="@this" />
+							</h:commandLink>
 						</h:form>
 					</li>				
 				</ul>
@@ -82,7 +84,7 @@
 	<ui:insert name="hidecontainer">				
 		<div class="container">		
 			<div class="row">
-				<div class="three columns">
+				<div class="two columns push one">
 					<ui:insert name="sidebarmenu">
 					</ui:insert>				
 				</div>	

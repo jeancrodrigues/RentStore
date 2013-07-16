@@ -22,7 +22,7 @@ public class FuncionarioBean extends BaseBean implements Serializable{
 	
 	@EJB
 	private IFuncionarioDao funcionarioDao;	
-	private String msg;			
+				
 	private Funcionario funcionario;
 	
 	@PostConstruct
@@ -32,21 +32,12 @@ public class FuncionarioBean extends BaseBean implements Serializable{
 		
 		if(params.containsKey("func_id")){
 			int id = Integer.valueOf(params.get("func_id"));
-			postMessage("editando o funcionario " + id);
 			funcionario = funcionarioDao.get(id);			
 		}else{
 			this.setFuncionario(new Funcionario());
 		}
 	}
 			
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
-
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}
@@ -60,8 +51,11 @@ public class FuncionarioBean extends BaseBean implements Serializable{
 		if((!funcionario.getPessoafisica().getCpf().isEmpty())&&(!funcionario.getPessoafisica().getNome().isEmpty())){		
 			funcionarioDao.save(funcionario);
 			return "funcionariosCadastrados?faces-redirect=true";
+		
+		}else{
+			postMessage("Dados incompletos.");
 		}
-		setMsg("Falha ao salvar.");
+		
 		return "";		
 	}	
 }

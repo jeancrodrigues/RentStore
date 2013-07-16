@@ -17,34 +17,41 @@
 								
 				<h2>Bem-vindo</h2>
 				<p>Faça o login para entrar na aplicação</p>
-				
-				<h:form>
-					
-						<div class="row">						
-							<ul>	
-								<h:outputText value="Usuário" />				
-								<li class="field">
-									<h:inputText class="text input" type="text" value="#{loginBean.nomeUsuario}" id="lgnome"/>
-								</li>
-								<h:outputText value="Senha" />
-								<li class="field">
-									<h:inputSecret class="password input" type="password" value="#{loginBean.senhaUsuario}" id="lgsenha"/>
-								</li>
-								
-							</ul>
-						</div>
+						
+					<h:form id="lgform">
+						<h:panelGroup layout="block" id="lgpnl">
+							<div class="row">						
+								<ul>	
+									<h:outputText value="Usuário" />				
+									<li class="field">
+										<h:inputText class="text input" type="text" value="#{loginBean.nomeUsuario}" id="lgnome"/>
+									</li>
+									<h:outputText value="Senha" />
+									<li class="field">
+										<h:inputSecret class="password input" type="password" value="#{loginBean.senhaUsuario}" id="lgsenha"/>
+									</li>
+									
+								</ul>
+							</div>
+							<div class="row">
+	<!-- 							<div class="medium info btn"><h:commandLink action="" value="Voltar"/></div> -->
+								<div  class="medium info btn">								
+									<h:commandLink id="lgbtn" value="Login" action="#{loginBean.logar}">
+										<f:ajax execute="@form" render="lgpnl lgmsgs"/>
+									</h:commandLink>
+								</div>												
+							</div>							
+													
+							<div class="row">
+								<p>Primeira vez aqui? <h:commandLink action="registro.xhtml" value="Registre-se" /></p>
+							</div>
+						</h:panelGroup>
+						
 						<div class="row">
-<!-- 							<div class="medium info btn"><h:commandLink action="" value="Voltar"/></div> -->
-							<div  class="medium info btn">
-								<h:commandLink id="lgbtn" value="Login" action="#{loginBean.logar}">
-									<f:ajax execute="@form" listener="#{loginBean.logar()}"/>
-								</h:commandLink>
-							</div>				
-						</div>
-						<div class="row">
-							<p>Primeira vez aqui? <h:commandLink action="registro.xhtml" value="Registre-se" /></p>
+								<h:messages id="lgmsgs" errorClass="danger alert" infoClass="info alert" warnClass="warning alert"/>
 						</div>								
-				</h:form>
+					</h:form>
+				
 				
 			
 			</div>

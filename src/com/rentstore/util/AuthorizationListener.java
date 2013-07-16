@@ -21,6 +21,9 @@ public class AuthorizationListener implements PhaseListener   {
 		String currentPage = facesContext.getViewRoot().getViewId();
 		 
 		boolean isLoginPage = (currentPage.lastIndexOf("login.xhtml") > -1);
+		
+		System.out.println(currentPage);
+		
 		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 		 
 		if(session==null){

@@ -13,7 +13,7 @@ import com.rentstore.model.Funcionario;
 
 @ViewScoped
 @ManagedBean
-public class ManterFuncionariosBean implements Serializable{
+public class ManterFuncionariosBean extends BaseBean implements Serializable{
 	
 	private static final long serialVersionUID = -3609527376087844387L;
 
@@ -43,7 +43,7 @@ public class ManterFuncionariosBean implements Serializable{
 			funcionarioDao.delete(func);			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.err.println(e.getMessage());
+			postMessage("Erro ao excluir funcionário: " + e.getMessage());			
 		}		
 	}
 	
