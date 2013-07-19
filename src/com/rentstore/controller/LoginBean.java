@@ -17,8 +17,6 @@ import com.rentstore.util.AutenticacaoUtils;
 @ManagedBean
 public class LoginBean extends BaseBean implements Serializable{
 	
-	@EJB
-	SessionBean sbean;
 	
 	/**
 	 * generated
@@ -35,7 +33,7 @@ public class LoginBean extends BaseBean implements Serializable{
 	private String senhaUsuario;	
 	
 	public LoginBean() {		
-		sbean.logout();
+		
 	}
 	
 	public String logar(){		
