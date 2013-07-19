@@ -1,4 +1,4 @@
-package br.com.concessionaria.controller;
+package com.rentstore.controller;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -10,8 +10,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import br.com.concessionaria.dao.IClienteDao;
-import br.com.concessionaria.model.Cliente;
+import com.rentstore.dao.IClienteDao;
+import com.rentstore.model.Cliente;
 
 @ViewScoped
 @ManagedBean

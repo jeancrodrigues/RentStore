@@ -1,6 +1,6 @@
-package br.com.concessionaria.dao;
+package com.rentstore.dao;
 
-import br.com.concessionaria.model.Cliente;
+import com.rentstore.model.Cliente;
 
 public interface IClienteDao extends IRentStoreBaseDao<Cliente>{
 	public Cliente buscarPorCPF (String CPF);

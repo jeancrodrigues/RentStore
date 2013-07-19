@@ -73,7 +73,7 @@
 					</li>
 					<h:outputText value="CEP:" class="two columns"/>
 					<li class="field">
-						<h:inputText value="#{funcionarioBean.funcionario.pessoafisica.endereco.CEP}"
+						<h:inputText value="#{funcionarioBean.funcionario.pessoafisica.endereco.cep}"
 							class="text input"/>
 					</li>
 					<h:outputText value="Complemento: " class="two columns"/>
@@ -104,15 +104,7 @@
 				<div class="row">
 					<div class="medium info btn"><h:commandLink action="funcionariosCadastrados" value="Voltar"/></div>
 					<div  class="medium info btn"><h:commandLink action="#{funcionarioBean.salvarFuncionario}" value="Salvar"/></div>				
-<<<<<<< HEAD
 				</div>
-				<div class="row">					
-					<h:outputText value="#{funcionarioBean.msg}" />					
-				</div>
-						
-=======
-				</div>			
->>>>>>> origin/Login
 			</div>				
 		</h:form>
 	</ui:define>
