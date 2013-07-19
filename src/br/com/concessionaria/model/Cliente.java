@@ -2,14 +2,16 @@ package br.com.concessionaria.model;
 
 // Generated 11/07/2013 17:45:57 by Hibernate Tools 3.4.0.CR1
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -34,8 +36,24 @@ public class Cliente implements java.io.Serializable {
 	private Pessoajuridica pessoajuridica;
 	private Date datacadastro;
 	private Set<Locacao> locacaos = new HashSet<Locacao>(0);
+	
+	public Cliente(){
+		
+	}
 
-	public Cliente() {
+	/**
+	 * Metodo construtor do Cliente
+	 * <br />
+	 * Recebe um boolean indicando se o Cliente é pessoa fisica ou não
+	 * <br />
+	 * @param isPessoaFisica boolean
+	 */
+	public Cliente(boolean isPessoaFisica) {
+		if( isPessoaFisica ){
+			pessoafisica = new Pessoafisica();
+		}else{
+			pessoajuridica = new Pessoajuridica();			
+		}
 	}
 
 	public Cliente(Pessoafisica pessoafisica, Pessoajuridica pessoajuridica,

@@ -37,6 +37,7 @@ public class Pessoajuridica implements java.io.Serializable {
 	private Set<Cliente> clientes = new HashSet<Cliente>(0);
 
 	public Pessoajuridica() {
+		this.endereco = new Endereco();
 	}
 
 	public Pessoajuridica(Endereco endereco, String razaosocial,

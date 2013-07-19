@@ -8,110 +8,118 @@
 <body> 
 	<ui:composition template="/resources/commomTemplate.xhtml">
 	
-	<ui:define name="sidebarmenu">
-		<h:form>
-			<nav id="sidebar-nav-holder" 
-				 class="vertical-nav" gumby-fixed="top|[data-target='gumby-helpers']" 
-				 style="width: auto; top: 0px;">
-				<h3>Menu</h3>	 
-		        <ul id="sidebar-nav">
-		        	<li><h:commandLink class="skip" value="Clientes Cadastrados" action="clientesCadastrados" /></li>                
-		        </ul>
-		    </nav>
-          </h:form>
-	</ui:define>
+		<ui:define name="sidebarmenu">
+			<h:form>
+				<nav id="sidebar-nav-holder" 
+					 class="vertical-nav" gumby-fixed="top|[data-target='gumby-helpers']" 
+					 style="width: auto; top: 0px;">
+					<h3>Menu</h3>	 
+			        <ul id="sidebar-nav">
+			        	<li><h:commandLink class="skip" value="Clientes Cadastrados" action="clientesCadastrados" /></li>                
+			        </ul>
+			    </nav>
+	        </h:form>
+		</ui:define>
 		
-	<ui:define name="content">
+		<ui:define name="content">
 		<h:form>
-			<h3>Cadastro de Clientes</h3>
-			<h5>Dados Pessoais</h5>
-			
-			<div id="container" class="seven columns">
-				<div  class="row">
-					<ul>
-					<h:outputText value="Nome:" class="two columns"/>
-					<li class="field">
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.nome}"
-							class="text input"/>
-					</li>				
-					<h:outputText value="Cpf:" class="two columns"/>
-					<li class="field">	
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.cpf}" 
-							class="text input"/>
-					</li>
-					<h:outputText value="RG:" class="two columns"/>
-					<li class="field">
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.rg}"
-							class="text input"/>
-					</li>
-					<h:outputText value="Telefone 1:" class="two columns"/>
-					<li class="field">
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.telefone1}"
-							class="text input"/>
-					</li>
-					<h:outputText value="Telefone 2:" class="two columns"/>
-					<li class="field">
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.telefone2}"
-							class="text input"/>
-					</li>
-					</ul>
-				</div>
+					
+				<h4>Cadastro de Clientes</h4>
+															
+<!-- 				<fieldset class="twelve columns"> -->
+<!--     				<legend> -->
+    				<h5>Dados Pessoais</h5>
+<!--     				</legend> -->
+								
+					<div class="row">						
+						<div class="field six columns">
+							<h:outputText value="Nome"/>
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.nome}" class="text input"/>
+						</div>						
+						<div class="field three columns">
+							<h:outputText value="Cpf"/>	
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.cpf}" class="text input">	
+							</h:inputText>
+						</div>					
+						<div class="field three columns">
+							<h:outputText value="RG"/>
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.rg}" class="text input" >							
+							</h:inputText>
+						</div>			
+					</div>
+					
+					<div class="row">
+						<div class="field three columns">
+							<h:outputText value="Telefone"/>
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.telefone1}"	class="text input"/>
+						</div>
+						<div class="field three columns">
+							<h:outputText value="Celular"/>
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.telefone2}"	class="text input"/>
+						</div>
+					</div>
 				
-				<h5> Endereço: </h5>
-				<div id="container2" class="seven columns">
-				<div  class="row">
-					<ul>
-					<h:outputText value="Rua:" class="two columns"/>
-					<li class="field">
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.logradouro}"
-							class="text input"/>
-					</li>				
-					<h:outputText value="Numero:" class="two columns"/>
-					<li class="field">	
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.numero}" 
-							class="text input"/>
-					</li>
-					<h:outputText value="CEP:" class="two columns"/>
-					<li class="field">
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.CEP}"
-							class="text input"/>
-					</li>
-					<h:outputText value="Complemento: " class="two columns"/>
-					<li class="field">	
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.complemento}" 
-							class="text input"/>
-					</li>
-					<h:outputText value="Bairro:" class="two columns"/>
-					<li class="field">
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.bairro}"
-							class="text input"/>
-					</li>
-					<h:outputText value="Cidade:" class="two columns"/>
-					<li class="field">
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.cidade}"
-							class="text input"/>
-					</li>
-					<h:outputText value="Estado:" class="two columns"/>
-					<li class="field">
-						<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.uf}"
-							class="text input"/>
-					</li>				
-					</ul>
-				</div>
-				</div>
-
-				<br />
-				<div class="row">
-					<div class="medium info btn"><h:commandLink action="clientesCadastrados" value="Voltar"/></div>
-					<div  class="medium info btn"><h:commandLink action="#{clienteBean.salvarCliente}" value="Salvar"/></div>				
-				</div>
-				<div class="row">					
-					<h:outputText value="#{clienteBean.msg}" />					
-				</div>
+<!-- 				</fieldset> -->
+<!-- 				<fieldset class="twelve columns">			 -->
+<!-- 					<legend> -->
+					<h5>Endereço</h5>
+<!-- 					</legend> -->
+					<div class="row">
+				
+						<div class="field two columns">
+							<h:outputText value="Cep"/>
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.cep}" class="text input"/>
+						</div>					
 						
-			</div>				
-		</h:form>
-	</ui:define>
+						<div class="field six columns push_one">
+							<h:outputText value="Rua"/>
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.logradouro}" class="text input"/>
+						</div>
+												
+						<div class="field two columns" >
+							<h:outputText value="Numero"/>	
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.numero}" class="text input"/>
+						</div>
+					</div>			
+						
+					<div class="row">						
+						<div class="field four columns">
+							<h:outputText value="Complemento: "/>	
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.complemento}" class="text input"/>
+						</div>
+						
+						
+						<div class="field three columns">
+							<h:outputText value="Bairro"/>
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.bairro}" class="text input"/>
+						</div>
+						
+						
+						<div class="field three columns">
+							<h:outputText value="Cidade"/>
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.cidade}" class="text input"/>
+						</div>
+						
+						
+						<div class="field one columns">
+							<h:outputText value="Estado"/>
+							<h:inputText value="#{clienteBean.cliente.pessoafisica.endereco.uf}" class="text input"/>
+						</div>
+					</div>
+					
+					<br />
+					
+					<div class="row centered four columns">	
+						<div class="medium info btn"><h:commandLink action="clientesCadastrados" value="Voltar"/></div>
+						<div  class="medium info btn push_one"><h:commandLink action="#{clienteBean.salvarCliente}" value="Salvar"/></div>
+					</div>
+<!-- 				</fieldset>				 -->
+										
+			
+		
+			</h:form>
+		</ui:define>
+		
 	</ui:composition>
 </body> 
 </html>
