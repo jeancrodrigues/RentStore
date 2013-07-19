@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<ui:composition template="/resources/commomTemplate.xhtml">
+	<ui:define name="sidebarmenu">
+		<h2>Menu</h2>				
+		<ul>
+			<h:form>
+				<li><h:commandLink value="Cadastrar Novo" action="cadastroFuncionario"/></li>
+			</h:form>
+		</ul>
+	</ui:define>
+	
+	<ui:define name="content">
+		<h3>Clientes cadastrados</h3>
+		<h:form>
+			<h:dataTable 
+				value="#{manterClientesBean.clientes}" 
+				var="cli" 
+				styleClass="data-table"
+				headerClass="data-table-header"
+				rowClasses="data-table-row" cellpadding="2em"  >
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{cli.pessoafisica.nome}" />			
+				</h:column>
+				<h:column>
+					<f:facet name="header">Cpf</f:facet>
+					<h:outputText value="#{cli.pessoafisica.cpf}" />			
+				</h:column>
+				<h:column>
+					<h:commandLink value="Cadastro" action="cadastroCliente">
+<!-- 						<f:setPropertyActionListener target="#{clienteBean.cliente}" value="#{cli}" /> -->
+						<f:param name="cli_id" value="#{cli.idcliente}" />
+					</h:commandLink>					
+				</h:column>
+				<h:column>
+					<h:commandLink value="Deletar" action="#{manterClientesBean.excluirCliente(cli)}" />
+				</h:column>			
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition> 
+</html>

@@ -30,6 +30,7 @@ public class Endereco implements java.io.Serializable {
 	private String bairro;
 	private String cidade;
 	private String uf;
+	private String CEP;
 	private String complemento;
 	private Set<Pessoajuridica> pessoajuridicas = new HashSet<Pessoajuridica>(0);
 	private Set<Pessoafisica> pessoafisicas = new HashSet<Pessoafisica>(0);
@@ -131,6 +132,14 @@ public class Endereco implements java.io.Serializable {
 
 	public void setPessoafisicas(Set<Pessoafisica> pessoafisicas) {
 		this.pessoafisicas = pessoafisicas;
+	}
+
+	public String getCEP() {
+		return CEP;
+	}
+
+	public void setCEP(String cEP) {
+		CEP = cEP;
 	}
 
 }
