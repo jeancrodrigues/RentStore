@@ -1667,7 +1667,11 @@ i.icon-db-shape:before { content: "\f600"; height: inherit; }
 i.icon-logo-db:before { content: "\f603"; height: inherit; }
 
 /* Form Styles */
+<<<<<<< HEAD
 form { margin: 0 0 18px; }
+=======
+form { margin: 0 0; }
+>>>>>>> origin/Login
 form label { display: block; font-size: 13px; font-size: 1rem; line-height: 2em; cursor: pointer; margin-bottom: 9px; }
 form label.inline { display: inline-block; padding-right: 20px; }
 form dt { margin: 0; }

@@ -4,7 +4,7 @@
 
 
 form { 
-  margin: 0 0 18px;
+  margin: 0 0 /*  18px */;
   label {
     display: block;
     @include font-size($norm);

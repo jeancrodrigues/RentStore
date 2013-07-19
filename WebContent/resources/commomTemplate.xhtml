@@ -27,9 +27,9 @@
 	<h:outputStylesheet library="css" name="table.css"  />
 <!-- 	<link rel="stylesheet" href="css/gumby.css"/> -->
 	<!-- <link rel="stylesheet" href="css/style.css"> -->
-
-	<h:outputScript library="js" name="libs/modernizr-2.6.2.min.js" />
-<!-- 	<script src="js/libs/modernizr-2.6.2.min.js"></script> -->
+	
+	<!-- 	<h:outputScript library="js" name="libs/modernizr-2.6.2.min.js" /> -->
+	<script src="resources/js/libs/modernizr-2.6.2.min.js"></script>
 </h:head>
 
 <style>
@@ -49,16 +49,18 @@
 	
 	<div class="navbar" id="nav1" gumby-fixed="top">
 		<div class="row">
-			<a class="toggle" gumby-trigger="#nav1 > .row > ul" href="#">
-				<i class="icon-menu"></i>
-			</a>
-			
+					
 			<h1 class="five columns logo">
 				<a href="index.xhtml">
 				RentStore				
 				</a>
 			</h1>
+			
 			<ui:insert name="hidemainmenu">
+				<a class="toggle" gumby-trigger="#nav1 > .row > ul" href="#">
+					<i class="icon-menu"></i>
+				</a>
+				
 				<ul class="seven columns">
 					<li><a href="index.xhtml">Home</a></li>
 					<li>
@@ -66,32 +68,41 @@
 							<a href="#">App</a>					
 						</ui:insert>				
 					</li>
-					<li><a href="about.xhtml">About</a></li>				
+					<li><a href="about.xhtml">About</a></li>
+					<li>
+						<h:form rendered="#{sessionBean.usuarioLogado}">
+							<h:commandLink action="#{sessionBean.logout}" value="Desconectar (#{sessionBean.loggedUserName})">
+								<f:ajax execute="@this" />
+							</h:commandLink>
+						</h:form>
+					</li>				
 				</ul>
 			</ui:insert>
 		</div>
 	</div>
 	
-	
-	<div class="centered eight columns">
-		<ui:insert name="nosidebar">
-		
-		</ui:insert>				
-	</div>	
-	
-	
-	<div class="container">
-		<div class="row">
-			<div class="three columns">
-				<ui:insert name="sidebarmenu">
-				</ui:insert>				
+	<ui:insert name="hidecontainer">				
+		<div class="container">		
+			<div class="row">
+				<div class="two columns push one">
+					<ui:insert name="sidebarmenu">
+					</ui:insert>				
+				</div>	
+				<div class="nine columns">
+					<ui:insert name="content">
+					</ui:insert>
+				</div>		
 			</div>	
-			<div class="nine columns">
-				<ui:insert name="content">
-				</ui:insert>
-			</div>		
-		</div>	
-	</div>
+		</div>
+	</ui:insert>
+	
+	<ui:insert name="facesmsgs">
+		<div class="row">
+			<div class="centered six columns">
+				<h:messages globalOnly="true" errorClass="danger alert" infoClass="info alert" warnClass="warning alert" id="fcmsgs"/>
+			</div>	
+		</div>
+	</ui:insert>
 	
 	<!-- Grab Google CDN's jQuery, fall back to local if offline -->
 <!-- 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->

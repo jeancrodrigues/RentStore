@@ -2,5 +2,11 @@
 <faces-config version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+<<<<<<< HEAD
  
+=======
+ <lifecycle>
+ 	<phase-listener>com.rentstore.util.AuthorizationListener</phase-listener>
+ </lifecycle>
+>>>>>>> origin/Login
 </faces-config>
