@@ -43,8 +43,10 @@ public class FuncionarioDaoImpl implements IFuncionarioDao {
 	public List<Funcionario> listAll() {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Funcionario> criteria = cb.createQuery(Funcionario.class);
+        
         Root<Funcionario> func = criteria.from(Funcionario.class);
-        criteria.select(func).orderBy(cb.asc( func.get("pessoafisica").get("nome") ));
+        
+        criteria.select(func).orderBy(cb.asc( func.get("pessoafisica").get("nome") ));       
         return em.createQuery(criteria).getResultList();
 	}
 

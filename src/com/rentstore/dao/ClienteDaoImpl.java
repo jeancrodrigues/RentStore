@@ -20,7 +20,7 @@ public class ClienteDaoImpl implements IClienteDao{
 	@Override
 	public Cliente save(Cliente cliente) {
 		return em.merge(cliente);
-		}
+	}
 	
 	@Override
 	public Cliente get(int primaryKey) {
@@ -52,6 +52,15 @@ public class ClienteDaoImpl implements IClienteDao{
         CriteriaQuery<Cliente> criteria = cb.createQuery(Cliente.class);
         Root<Cliente> cli = criteria.from(Cliente.class);
         criteria.select(cli).where(cb.equal(cli.get("pessoafisica").get("cpf"), cpf));
+        return em.createQuery(criteria).getSingleResult();
+	}
+
+	@Override
+	public Cliente buscarPorCnpj(String cnpj) {
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Cliente> criteria = cb.createQuery(Cliente.class);
+        Root<Cliente> cli = criteria.from(Cliente.class);
+        criteria.select(cli).where(cb.equal(cli.get("pessoajuridica").get("cnpj"), cnpj));
         return em.createQuery(criteria).getSingleResult();
 	}
 }
