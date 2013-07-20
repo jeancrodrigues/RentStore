@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -75,7 +76,7 @@ public class Cliente implements java.io.Serializable {
 		this.idcliente = idcliente;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name = "idpessoafisica")
 	public Pessoafisica getPessoafisica() {
 		return this.pessoafisica;

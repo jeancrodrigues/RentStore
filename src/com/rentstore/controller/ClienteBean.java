@@ -52,7 +52,7 @@ public class ClienteBean extends BaseBean implements Serializable {
 	public String salvarCliente(){		
 		if((!cliente.getPessoafisica().getCpf().isEmpty())&&(!cliente.getPessoafisica().getNome().isEmpty())){		
 			clienteDao.save(cliente);
-			return "ClientesCadastrados?faces-redirect=true";
+			return "clientesCadastrados?faces-redirect=true";
 		}
 		
 		postMessage("Falha ao salvar.");
