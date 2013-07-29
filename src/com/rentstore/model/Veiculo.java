@@ -3,7 +3,6 @@ package com.rentstore.model;
 // Generated 11/07/2013 17:45:57 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +12,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,13 +31,10 @@ public class Veiculo implements java.io.Serializable {
 	private Combustivel combustivel;
 	private String modelo;
 	private String marca;
+	private String chassi;
 	private Date anomodelo;
 	private Date anofabricacao;
 	private Integer quilometragem;
-	private Set<Locacao> locacaos = new HashSet<Locacao>(0);
-	private Set<Venda> vendas = new HashSet<Venda>(0);
-	private Set<Compra> compras = new HashSet<Compra>(0);
-	private Set<Manutencao> manutencaos = new HashSet<Manutencao>(0);
 
 	public Veiculo() {
 	}
@@ -48,7 +43,7 @@ public class Veiculo implements java.io.Serializable {
 		this.combustivel = combustivel;
 	}
 
-	public Veiculo(Combustivel combustivel, String modelo, String marca,
+	public Veiculo(Combustivel combustivel, String modelo, String marca,String chassi,
 			Date anomodelo, Date anofabricacao, Integer quilometragem,
 			Set<Locacao> locacaos, Set<Venda> vendas, Set<Compra> compras,
 			Set<Manutencao> manutencaos) {
@@ -58,10 +53,8 @@ public class Veiculo implements java.io.Serializable {
 		this.anomodelo = anomodelo;
 		this.anofabricacao = anofabricacao;
 		this.quilometragem = quilometragem;
-		this.locacaos = locacaos;
-		this.vendas = vendas;
-		this.compras = compras;
-		this.manutencaos = manutencaos;
+		this.chassi = chassi;
+
 	}
 
 	@Id
@@ -112,6 +105,15 @@ public class Veiculo implements java.io.Serializable {
 	public void setAnomodelo(Date anomodelo) {
 		this.anomodelo = anomodelo;
 	}
+	
+	@Column(name = "chassi", length = 30)
+	public String getChassi() {
+		return this.chassi;
+	}
+
+	public void setChassi(String chassi) {
+		this.chassi = chassi;
+	}
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "anofabricacao", length = 10)
@@ -130,42 +132,6 @@ public class Veiculo implements java.io.Serializable {
 
 	public void setQuilometragem(Integer quilometragem) {
 		this.quilometragem = quilometragem;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "veiculo")
-	public Set<Locacao> getLocacaos() {
-		return this.locacaos;
-	}
-
-	public void setLocacaos(Set<Locacao> locacaos) {
-		this.locacaos = locacaos;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "veiculo")
-	public Set<Venda> getVendas() {
-		return this.vendas;
-	}
-
-	public void setVendas(Set<Venda> vendas) {
-		this.vendas = vendas;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "veiculo")
-	public Set<Compra> getCompras() {
-		return this.compras;
-	}
-
-	public void setCompras(Set<Compra> compras) {
-		this.compras = compras;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "veiculo")
-	public Set<Manutencao> getManutencaos() {
-		return this.manutencaos;
-	}
-
-	public void setManutencaos(Set<Manutencao> manutencaos) {
-		this.manutencaos = manutencaos;
 	}
 
 }
